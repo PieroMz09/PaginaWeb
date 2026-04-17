@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Viaja Bus - Iniciar sesión</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #EEF2F7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+ 
+    /* ── LOGO ── */
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #003580;
+      margin-bottom: 28px;
+      letter-spacing: 1px;
+    }
+ 
+    /* ── TABS ── */
+    .tabs {
+      display: flex;
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      overflow: hidden;
+      margin-bottom: 20px;
+      width: 380px;
+    }
+    .tab {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #888;
+      border: none;
+      background: transparent;
+      transition: all 0.2s;
+    }
+    .tab.active {
+      background: #003580;
+      color: #fff;
+    }
+    .tab:hover:not(.active) {
+      background: #f0f4f8;
+      color: #003580;
+    }
+ 
+    /* ── CARD ── */
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #ddd;
+      padding: 32px 36px;
+      width: 380px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .card h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #003580;
+      margin-bottom: 4px;
+    }
+    .card p {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 24px;
+    }
+ 
+    /* ── CAMPOS ── */
+    .field { margin-bottom: 16px; }
+    .field label {
+      font-size: 12px;
+      color: #555;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .field input {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 14px;
+      color: #222;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .field input:focus {
+      border-color: #003580;
+      box-shadow: 0 0 0 3px rgba(0,53,128,0.08);
+    }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+ 
+    /* ── OLVIDÉ CONTRASEÑA ── */
+    .forgot {
+      text-align: right;
+      margin-top: -10px;
+      margin-bottom: 18px;
+    }
+    .forgot a {
+      font-size: 12px;
+      color: #0055AA;
+      text-decoration: none;
+    }
+    .forgot a:hover { text-decoration: underline; }
+ 
+    /* ── BOTONES ── */
+    .btn-main {
+      width: 100%;
+      background: #003580;
+      color: #fff;
+      border: none;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .btn-main:hover { background: #0055AA; }
+ 
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .divider span { font-size: 12px; color: #aaa; white-space: nowrap; }
+    .divider hr { flex: 1; border: none; border-top: 1px solid #eee; }
+ 
+    .btn-google {
+      width: 100%;
+      background: #fff;
+      color: #444;
+      border: 1px solid #ddd;
+      padding: 11px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 0.2s;
+    }
+    .btn-google:hover { background: #f5f5f5; }
+    .g-icon {
+      width: 18px; height: 18px;
+      background: #EA4335;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+ 
+    /* ── CHECKBOX ── */
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .check-row input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; }
+    .check-row label { font-size: 12px; color: #555; cursor: pointer; }
+    .check-row a { color: #0055AA; text-decoration: none; }
+ 
+    /* ── PANELS ── */
+    .panel { display: none; }
+    .panel.active { display: block; }
+ 
+    /* ── FOOTER ── */
+    .page-footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #aaa;
+      text-align: center;
+    }
+    .page-footer a { color: #0055AA; text-decoration: none; }
+  </style>
+</head>
+<body>
+ 
+  <div class="logo">🚌 VIAJA BUS</div>
+ 
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" onclick="show('login', this)">Iniciar sesión</button>
+    <button class="tab" onclick="show('registro', this)">Registrarse</button>
+  </div>
+ 
+  <!-- CARD -->
+  <div class="card">
+ 
+    <!-- ── LOGIN ── -->
+    <div id="login" class="panel active">
+      <h2>Bienvenido de vuelta</h2>
+      <p>Ingresa tus datos para continuar</p>
+ 
+      <div class="field">
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="correo@ejemplo.com" />
+      </div>
+ 
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" placeholder="••••••••" />
+      </div>
+ 
+      <div class="forgot">
+        <a href="#">¿Olvidaste tu contraseña?</a>
+      </div>
+ 
+      <button class="btn-main">Iniciar sesión</button>
+ 
+      <div class="divider">
+        <hr><span>o continúa con</span><hr>
+      </div>
+ 
+      <button class="btn-google">
+        <span class="g-icon">G</span>
+        Iniciar sesión con Google
+      </button>
+    </div>
+ 
+    <!-- ── REGISTRO ── -->
+    <div id="registro" class="panel">
+      <h2>Crea tu cuenta</h2>
+      <p>Únete y compra tus pasajes fácilmente</p>
+ 
+      <div class="row2">
+        <div class="field">
+          <label>Nombre</label>
+          <input type="text" placeholder="Juan" />
+        </div>
+        <div class="field">
+          <label>Apellido</label>
+          <input type="text" placeholder="Pérez" />
+        </div>
+      </div>
+ 
+      <div class="field">
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="correo@ejemplo.com" />
+      </div>
+ 
+      <div class="field">
+        <label>Teléfono</label>
+        <input type="tel" placeholder="+51 999 999 999" />
+      </div>
+ 
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" placeholder="Mínimo 8 caracteres" />
+      </div>
+ 
+      <div class="field">
+        <label>Confirmar contraseña</label>
+        <input type="password" placeholder="Repite tu contraseña" />
+      </div>
+ 
+      <div class="check-row">
+        <input type="checkbox" id="terms" />
+        <label for="terms">
+          Acepto los <a href="#">términos y condiciones</a> y la
+          <a href="#">política de privacidad</a>
+        </label>
+      </div>
+ 
+      <button class="btn-main">Crear cuenta</button>
+ 
+      <div class="divider">
+        <hr><span>o regístrate con</span><hr>
+      </div>
+ 
+      <button class="btn-google">
+        <span class="g-icon">G</span>
+        Registrarse con Google
+      </button>
+    </div>
+ 
+  </div>
+ 
+  <div class="page-footer">
+    ¿Necesitas ayuda? <a href="#">Contáctanos</a>
+  </div>
+ 
+  <script>
+    function show(panel, btn) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(panel).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+ 
+</body>
+</html>
