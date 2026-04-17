@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Mi primera página</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avance Proyecto Android</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: linear-gradient(135deg, #1e3c72, #2a5298); color: #fff; }
+    header { text-align: center; padding: 40px 20px; }
+    header h1 { font-size: 2.5rem; }
+    header p { opacity: 0.8; }
+    .container { max-width: 1000px; margin: auto; padding: 20px; }
+    .card { background: #ffffff10; backdrop-filter: blur(10px); border-radius: 20px; padding: 20px; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .card h2 { margin-bottom: 10px; }
+    .progress-bar { background: #ffffff30; border-radius: 10px; overflow: hidden; height: 20px; }
+    .progress { height: 100%; width: 70%; background: #00ffcc; }
+    .team { display: flex; gap: 15px; flex-wrap: wrap; }
+    .member { flex: 1; background: #ffffff15; padding: 15px; border-radius: 15px; text-align: center; }
+    footer { text-align: center; padding: 20px; opacity: 0.7; }
+  </style>
 </head>
 <body>
-  <h1>Hola mundo 🚀</h1>
-  <p>Esta es mi web en GitHub Pages</p>
+
+<header>
+  <h1>📱 Avance de Aplicación Android</h1>
+  <p>Proyecto grupal - Desarrollo en progreso</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>🚀 Estado del Proyecto</h2>
+    <p>Actualmente estamos desarrollando las funcionalidades principales de la aplicación.</p>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+    <p>Progreso: 70%</p>
+  </div>
+
+  <div class="card">
+    <h2>🛠️ Funcionalidades implementadas</h2>
+    <ul>
+      <li>✔ Diseño de interfaz inicial</li>
+      <li>✔ Navegación entre pantallas</li>
+      <li>✔ Conexión a base de datos</li>
+      <li>⏳ Sistema de login (en progreso)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>👥 Equipo de desarrollo</h2>
+    <div class="team">
+      <div class="member">
+        <h3 contenteditable="true">Nombre 1</h3>
+        <p>Developer</p>
+      </div>
+      <div class="member">
+        <h3 contenteditable="true">Nombre 2</h3>
+        <p>Practicante</p>
+      </div>
+      <div class="member">
+        <h3 contenteditable="true">Nombre 3</h3>
+        <p>Practicante</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Proyecto académico - 2026</p>
+</footer>
+
 </body>
 </html>
